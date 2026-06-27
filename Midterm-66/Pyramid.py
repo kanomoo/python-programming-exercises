@@ -50,3 +50,10 @@ for i in num:
     result += " "
 for i in range(len(num)):
     print(" " * (len(num) - i -1) + result[:i * 2+1])
+
+
+num, result = input("Enter string for Pyramid : "), ""
+result = ""
+for i in num: result += i + " "
+for i in range(len(num)): print(" " * (len(num) - i -1) + result[:i * 2+1])
+
