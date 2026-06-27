@@ -43,16 +43,23 @@
 # for i in range(len(p)):
 #     print(p[i] + " ",end="")
 
-num = input("Enter string for Pyramid : ")
-result = ""
-for i in num:
-    result += i
-    result += " "
-for i in range(len(num)):
-    print(" " * (len(num) - i -1) + result[:i * 2+1])
+
+# num = input("Enter string for Pyramid : ")
+# result = ""
+# for i in num:
+#     result += i
+#     result += " "
+# for i in range(len(num)):
+#     print(" " * (len(num) - i -1) + result[:i * 2+1])
 
 
-num, result = input("Enter string for Pyramid : "), ""
-for i in num: result += i + " "
-for i in range(len(num)): print(" " * (len(num) - i -1) + result[:i * 2+1])
+# num, result = input("Enter string for Pyramid : "), ""
+# for i in num: result += i + " "
+# for i in range(len(num)): print(" " * (len(num) - i -1) + result[:i * 2+1])
 
+
+name = input("Enter name: ")
+for i in range(len(name)):
+    print(" " * (len(name) - i - 1), end = "")
+    for l in range(i): print(name[l], end = " ")
+    print()
