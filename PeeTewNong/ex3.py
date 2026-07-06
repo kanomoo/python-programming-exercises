@@ -1,0 +1,2 @@
+bill, people = int(input("Total Bill (Baht): ")), int(input("Number of people: "))
+print(f"\n====== Bill Summary ======\n{"Original Bill":<17}: {bill:,.2f} Baht\n{"Service Charge":<17}: 300.00 Baht\n{"Total Net Price":17}: {bill + 300:.2f} Baht\n{"Each Person Pays":<17}: {(bill + 300) / 4:.2f} Baht\n{"=" * 26}")

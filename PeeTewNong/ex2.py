@@ -1,0 +1,1 @@
+print("=" * 25); cake, coffee = float(input((" " * 19 + "THB" )+ "\rCake price : ")), float(input((" " * 21 + "THB" )+ "\rCoffee price : ")) ;print("=" * 25); total = cake + coffee; discount = total * 0.15; print(f"Total price : {total:.2f} THB\nDiscount (15%) : {discount:.2f} THB\nNet price : {total - discount:.2f}")

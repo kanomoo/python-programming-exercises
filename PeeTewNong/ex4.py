@@ -1,0 +1,2 @@
+name1, sub1, score1, name2, sub2, score2, name3, sub3, score3 = input("Enter Name    1 : "), input("Enter Subject 1 : "), input("Enter Score   1 : "), input("\nEnter Name    2 : "), input("Enter Subject 2 : "), input("Enter Score   2 : "), input("\nEnter Name    3 : "), input("Enter subject 3 : "), input("Enter Score   3 : ")
+print(f"\n{"=" * 50}\n{"Name":16}|{"Subject":^21}|{"Score":>11}\n{"-" * 50}\n{name1:16}|{sub1:^21}|{score1:>11}\n{name2:16}|{sub2:^21}|{score2:>11}\n{name3:16}|{sub3:^21}|{score3:>11}")
