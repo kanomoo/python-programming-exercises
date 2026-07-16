@@ -394,17 +394,16 @@
 
 
 def divide_plot(x: int, y: int, z: int, start: str) -> str:
-    if x == y and y == z: return ""
+    a, b, c = x, y, z
+    if a == b and b == c: return ""
     ops, position = "", start
-    total = (x + y + z) // 3
-    if x < total and position == "A":
-        push = total - x
-        x += push
-        y -= push
-        ops = concat_ops(f"PUSH_RIGHT {push}", ops)
-        position = right(position)
-    if x > total and position == "A":
-        push = x - total
+    target = (x + y + z) // 3
+    diff_a, diff_b, diff_c = target - a, target - b, target - c
+    if diff_a > 0:
+        a -= diff_a
+        b += diff_a
+        diff_b += a
+    
 
 
     return ops.strip(", ")
