@@ -353,41 +353,80 @@
 
 
 
-def divide_plot(x: int, y: int, z: int, start: str) -> str:
-    T = (x + y + z) // 3
-    d1, d2 = T - x, (2 * T) - (x + y)
+# def divide_plot(x: int, y: int, z: int, start: str) -> str:
+#     T = (x + y + z) // 3
+#     d1, d2 = T - x, (2 * T) - (x + y)
     
-    p1 = 'A' if d1 > 0 else ('B' if d1 < 0 else "")
-    a1 = 'PUSH_RIGHT ' + str(d1) if d1 > 0 else ('PUSH_LEFT ' + str(-d1) if d1 < 0 else "")
+#     p1 = 'A' if d1 > 0 else ('B' if d1 < 0 else "")
+#     a1 = 'PUSH_RIGHT ' + str(d1) if d1 > 0 else ('PUSH_LEFT ' + str(-d1) if d1 < 0 else "")
     
-    p2 = 'B' if d2 > 0 else ('C' if d2 < 0 else "")
-    a2 = 'PUSH_RIGHT ' + str(d2) if d2 > 0 else ('PUSH_LEFT ' + str(-d2) if d2 < 0 else "")
+#     p2 = 'B' if d2 > 0 else ('C' if d2 < 0 else "")
+#     a2 = 'PUSH_RIGHT ' + str(d2) if d2 > 0 else ('PUSH_LEFT ' + str(-d2) if d2 < 0 else "")
     
-    if ((2 * T) - x) >= 1 or ((x + y) - T) < 1:
-        m1 = get_moves(start, p2)
-        m2 = get_moves(p2 or start, p1) # ถ้า p2 เป็นค่าว่าง ให้ใช้ start แทน
-        ops = concat_ops(concat_ops(m1, a2), concat_ops(m2, a1))
-    else:
-        m1 = get_moves(start, p1)
-        m2 = get_moves(p1 or start, p2)
-        ops = concat_ops(concat_ops(m1, a1), concat_ops(m2, a2))
+#     if ((2 * T) - x) >= 1 or ((x + y) - T) < 1:
+#         m1 = get_moves(start, p2)
+#         m2 = get_moves(p2 or start, p1) # ถ้า p2 เป็นค่าว่าง ให้ใช้ start แทน
+#         ops = concat_ops(concat_ops(m1, a2), concat_ops(m2, a1))
+#     else:
+#         m1 = get_moves(start, p1)
+#         m2 = get_moves(p1 or start, p2)
+#         ops = concat_ops(concat_ops(m1, a1), concat_ops(m2, a2))
 
-    return ops.strip(', ')
+#     return ops.strip(', ')
+
+# def concat_ops(op1: str, op2: str) -> str:
+#     if not op1 and not op2: return ''
+#     if not op1: return op2
+#     if not op2: return op1
+#     return ', '.join([op1, op2])
+
+# def get_moves(c: str, t: str) -> str:
+#     if not c or not t or c == t: return ""
+#     if c == 'A': return 'RIGHT' if t == 'B' else 'RIGHT, RIGHT'
+#     if c == 'B': return 'LEFT' if t == 'A' else 'RIGHT'
+#     return 'LEFT' if t == 'B' else 'LEFT, LEFT'
+
+# if __name__ == '__main__':
+#     from HW04_3_helper import simulate_operations
+#     ops = divide_plot(2, 5, 8, 'A')
+#     result = simulate_operations(2, 5, 8, 'A', ops)
+#     print(result)
+
+
+def divide_plot(x: int, y: int, z: int, start: str) -> str:
+    if x == y and y == z: return ""
+    ops, position = "", start
+    total = (x + y + z) // 3
+    if x < total and position == "A":
+        push = total - x
+        x += push
+        y -= push
+        ops = concat_ops(f"PUSH_RIGHT {push}", ops)
+        position = right(position)
+    if x > total and position == "A":
+        push = x - total
+
+
+    return ops.strip(", ")
+
+def left(position):
+    if position == "A": return ""
+    elif position == "B": return "A"
+    elif position == "C": return "B"
+
+def right(position):
+    if position == "A": return "B"
+    elif position == "B": return "C"
+    elif position == "C": return ""
+
 
 def concat_ops(op1: str, op2: str) -> str:
-    if not op1 and not op2: return ''
+    if not op1 and not op2: return ""
     if not op1: return op2
     if not op2: return op1
-    return ', '.join([op1, op2])
+    return ", ".join([op1, op2])
 
-def get_moves(c: str, t: str) -> str:
-    if not c or not t or c == t: return ""
-    if c == 'A': return 'RIGHT' if t == 'B' else 'RIGHT, RIGHT'
-    if c == 'B': return 'LEFT' if t == 'A' else 'RIGHT'
-    return 'LEFT' if t == 'B' else 'LEFT, LEFT'
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     from HW04_3_helper import simulate_operations
-    ops = divide_plot(2, 5, 8, 'A')
-    result = simulate_operations(2, 5, 8, 'A', ops)
-    print(result)
+    print(divide_plot(2, 5, 8, "A"))
+    print(divide_plot(60, 60, 60, "B"))
