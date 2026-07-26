@@ -1,15 +1,11 @@
-result = ""
-for i in range(3):
-    name = input(f"Enter Name {i + 1} : ")
-    score = int(input(f"Enter Score {i + 1} :"))
-    if score >= 80 and score <= 100:grade = "A"
-    elif score >= 75:grade = "B+"
-    elif score >= 70:grade = "B"
-    elif score >= 65:grade = "C+"
-    elif score >= 60:grade = "C"
-    elif score >= 55:grade = "D+"
-    elif score >= 50:grade = "D"
-    else:grade = "F"
-    result += (f"Name {name} | Score {score} | Grade{grade}\n")
-
-print(result)
+print(">> Program Find Maximum Digit <<")
+while True:
+    Max = 0
+    num = input("Enter integer number(0-exit) : ")
+    if num == "0":
+        print("Exit Program")
+        break
+    for i in num:
+        if int(i) > Max: Max = int(i)
+    print(f"Maximum Digit of integer number {num} = {Max}")
+    
