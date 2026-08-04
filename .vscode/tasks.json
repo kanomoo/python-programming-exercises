@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git-sync-main",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"config",
+				"pull.rebase",
+				"true",
+				"&&",
+				"git",
+				"pull",
+				"--tags",
+				"--rebase",
+				"origin",
+				"main"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
