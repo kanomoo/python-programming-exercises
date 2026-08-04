@@ -110,7 +110,7 @@ def s1():
         print(n)
 
     print("\n===27===")
-    for n in range(1,6):  #range = 5 (0 - 5)
+    for n in range(1,6):  #range = 5 (1 - 5)
         print(n)
 
     print()
